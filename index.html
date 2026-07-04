@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jurídica CRM — El CRM para abogados chilenos</title>
+  <meta name="description" content="Gestiona causas, agenda, cobros y clientes en un solo lugar. Diseñado exclusivamente para abogados y estudios jurídicos de Chile. Prueba gratis 14 días."/>
+  <meta property="og:title" content="Jurídica CRM — El CRM para abogados chilenos"/>
+  <meta property="og:description" content="Nunca más pierdas un plazo. Causas, agenda, cobros y clientes en un solo lugar."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* Animaciones hero */
+    .fade-up { opacity:0; transform:translateY(28px); animation: fadeUp .7s ease forwards; }
+    .fade-up-1 { animation-delay:.1s }
+    .fade-up-2 { animation-delay:.2s }
+    .fade-up-3 { animation-delay:.32s }
+    .fade-up-4 { animation-delay:.44s }
+    .fade-up-5 { animation-delay:.56s }
+    @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+
+    /* Mockup hero */
+    .mockup-screen { padding: 20px; }
+    .mockup-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    .mockup-stat { background: rgba(255,255,255,.06); border-radius: 10px; padding: 12px 14px; }
+    .mockup-stat-val { font-size: 20px; font-weight: 900; color: white; }
+    .mockup-stat-val.green { color: #34D399; }
+    .mockup-stat-val.blue { color: #60A5FA; }
+    .mockup-stat-val.red { color: #EF4444; }
+    .mockup-stat-label { font-size: 10px; color: rgba(255,255,255,.4); margin-top: 2px; }
+    .mockup-list-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: rgba(255,255,255,.04); border-radius: 8px; margin-bottom: 6px; }
+    .mockup-avatar { width: 28px; height: 28px; border-radius: 50%; background: #1A56A0; display: flex; align-items:center; justify-content:center; font-size: 10px; font-weight: 800; color: white; flex-shrink:0; }
+    .mockup-name { font-size: 11px; color: rgba(255,255,255,.75); flex: 1; }
+    .mockup-badge { font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 10px; }
+    .badge-red { background: rgba(239,68,68,.2); color: #FCA5A5; }
+    .badge-orange { background: rgba(249,115,22,.2); color: #FDBA74; }
+    .badge-yellow { background: rgba(234,179,8,.2); color: #FDE047; }
+    .mockup-amount { font-size: 11px; font-weight: 700; color: white; }
+
+    /* Módulos tabs */
+    .mod-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; justify-content: center; }
+    .mod-tab { padding: 9px 18px; border-radius: 22px; border: 1.5px solid #E5E7EB; background: white; font-size: 13px; font-weight: 600; color: #6B7280; cursor: pointer; transition: all .2s; }
+    .mod-tab.active, .mod-tab:hover { background: #0F1E35; border-color: #0F1E35; color: white; }
+    .mod-panel { display: none; }
+    .mod-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    @media(max-width:768px) { .mod-panel.active { display: block; } .mod-panel.active .mod-visual { margin-top: 28px; } }
+  </style>
+</head>
+<body>
+
+<!-- ══════ NAV ══════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="22" height="22" viewBox="0 0 44 44" fill="none">
+          <path d="M22 4L22 40" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M13 12L22 4L31 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 20L17 20M7 20L4 28C4 30.8 6.2 33 9 33C11.8 33 14 30.8 14 28L11 20" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M37 20L27 20M37 20L40 28C40 30.8 37.8 33 35 33C32.2 33 30 30.8 30 28L33 20" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 40H29" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Jurídica <span>CRM</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="funcionalidades.html" class="nav-link">Funcionalidades</a>
+      <a href="precios.html" class="nav-link">Precios</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://juridica-frontend-production.up.railway.app/login" class="btn-nav-ghost">Iniciar sesión</a>
+      <a href="https://juridica-frontend-production.up.railway.app/register" class="btn-nav-solid">Probar gratis →</a>
+    </div>
+    <button class="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="index.html">Inicio</a>
+  <a href="funcionalidades.html">Funcionalidades</a>
+  <a href="precios.html">Precios</a>
+  <a href="blog.html">Blog</a>
+  <a href="contacto.html">Contacto</a>
+  <a href="https://juridica-frontend-production.up.railway.app/register">Probar gratis 14 días →</a>
+</div>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge fade-up fade-up-1">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        El CRM N°1 para abogados chilenos
+      </div>
+      <h1 class="hero-title fade-up fade-up-2">
+        Tu estudio.<br/>
+        <span class="accent">Finalmente</span><br/>
+        organizado.
+      </h1>
+      <p class="hero-sub fade-up fade-up-3">Causas, agenda, cobros y clientes — todo en un solo lugar. Sin planillas de Excel, sin perder plazos, sin dejar honorarios sin cobrar.</p>
+      <div class="hero-ctas fade-up fade-up-4">
+        <a href="https://juridica-frontend-production.up.railway.app/register" class="btn btn-primary btn-lg">Crear cuenta gratis <span>→</span></a>
+        <a href="funcionalidades.html" class="btn btn-secondary">Ver funcionalidades</a>
+      </div>
+      <div class="hero-trust fade-up fade-up-5">
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          14 días gratis
+        </div>
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Sin tarjeta de crédito
+        </div>
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Cancela cuando quieras
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual fade-up fade-up-3">
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#FF5F57"></div>
+          <div class="mockup-dot" style="background:#FEBC2E"></div>
+          <div class="mockup-dot" style="background:#28C840"></div>
+          <span style="font-size:10px;color:rgba(255,255,255,.3);margin-left:10px;">Dashboard — Jurídica CRM</span>
+        </div>
+        <div class="mockup-screen">
+          <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">📊 Resumen del mes</div>
+          <div class="mockup-stat-row">
+            <div class="mockup-stat">
+              <div class="mockup-stat-val green">$1.455.000</div>
+              <div class="mockup-stat-label">Ingresos del mes</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="mockup-stat-val blue">12</div>
+              <div class="mockup-stat-label">Causas activas</div>
+            </div>
+          </div>
+          <div class="mockup-stat-row">
+            <div class="mockup-stat">
+              <div class="mockup-stat-val red">3</div>
+              <div class="mockup-stat-label">Cobros vencidos</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="mockup-stat-val" style="color:#A78BFA">87%</div>
+              <div class="mockup-stat-label">Tasa de éxito</div>
+            </div>
+          </div>
+          <div style="height:1px;background:rgba(255,255,255,.06);margin:12px 0;"></div>
+          <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">🔴 Cobros vencidos</div>
+          <div class="mockup-list-item">
+            <div class="mockup-avatar">AS</div>
+            <div class="mockup-name">Andrea Soto M.</div>
+            <span class="mockup-badge badge-red">CRÍTICO</span>
+            <div class="mockup-amount">$350.000</div>
+          </div>
+          <div class="mockup-list-item">
+            <div class="mockup-avatar" style="background:#7C3AED">JP</div>
+            <div class="mockup-name">Jorge Pizarro N.</div>
+            <span class="mockup-badge badge-orange">ALTO</span>
+            <div class="mockup-amount">$200.000</div>
+          </div>
+          <div class="mockup-list-item">
+            <div class="mockup-avatar" style="background:#059669">SM</div>
+            <div class="mockup-name">Sofía Morales R.</div>
+            <span class="mockup-badge badge-yellow">MEDIO</span>
+            <div class="mockup-amount">$300.000</div>
+          </div>
+          <div style="margin-top:10px;background:rgba(26,86,160,.2);border-radius:8px;padding:8px 12px;font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:7px;">
+            <span>📅</span> Hoy: Audiencia de Conciliación — 09:00 · Juzgado Laboral
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ STATS BAR ══════ -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div>
+      <div class="stat-num">5<span class="unit">+ hrs</span></div>
+      <div class="stat-desc">recuperadas por semana en tareas administrativas</div>
+    </div>
+    <div>
+      <div class="stat-num">0</div>
+      <div class="stat-desc">plazos perdidos cuando usas alertas automáticas</div>
+    </div>
+    <div>
+      <div class="stat-num">+30<span class="unit">%</span></div>
+      <div class="stat-desc">en cobros recuperados el primer mes de uso</div>
+    </div>
+    <div>
+      <div class="stat-num">14<span class="unit"> días</span></div>
+      <div class="stat-desc">de prueba gratis, sin tarjeta de crédito</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PROBLEMA ══════ -->
+<section style="background:#F8FAFF;">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+      <div class="fade-in">
+        <div class="section-label">El problema que resolvemos</div>
+        <h2 class="section-title">El abogado trabaja más.<br/>Pero gana menos de lo que debería.</h2>
+        <p class="section-sub" style="margin-bottom:28px;">No porque le falte talento — sino porque pierde horas en tareas que no son de abogado: buscar un expediente en carpetas, calcular plazos a mano, perseguir deudores por teléfono.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:14px;background:white;border-radius:12px;border:1px solid #E5E7EB;">
+            <span style="font-size:20px;flex-shrink:0;">📂</span>
+            <div><div style="font-size:13px;font-weight:700;color:#0F1E35;margin-bottom:2px;">Causas dispersas en Excel y correos</div><div style="font-size:12px;color:#6B7280;">¿En qué carpeta está el RIT de esa causa? ¿Quién tiene la última versión?</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:14px;background:white;border-radius:12px;border:1px solid #E5E7EB;">
+            <span style="font-size:20px;flex-shrink:0;">⏰</span>
+            <div><div style="font-size:13px;font-weight:700;color:#0F1E35;margin-bottom:2px;">Plazos calculados a mano o con recordatorios genéricos</div><div style="font-size:12px;color:#6B7280;">Google Calendar no sabe de días hábiles. Un error cuesta una causa.</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:14px;background:white;border-radius:12px;border:1px solid #E5E7EB;">
+            <span style="font-size:20px;flex-shrink:0;">💸</span>
+            <div><div style="font-size:13px;font-weight:700;color:#0F1E35;margin-bottom:2px;">Honorarios que se cobran tarde o no se cobran</div><div style="font-size:12px;color:#6B7280;">Sin un sistema de seguimiento, los clientes no pagan solos.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in" style="background:linear-gradient(135deg,#0A1628,#1A3A6B);border-radius:20px;padding:36px;color:white;">
+        <div style="font-size:13px;font-weight:700;color:#60A5FA;margin-bottom:20px;">Con Jurídica CRM, esto cambia →</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(52,211,153,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">⚖️</div>
+            <div><div style="font-size:13px;font-weight:700;">Todas tus causas en un solo lugar</div><div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">RIT, tribunal, estado, tareas, documentos y cobros por causa</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(96,165,250,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🔔</div>
+            <div><div style="font-size:13px;font-weight:700;">Alertas automáticas de plazos</div><div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">Días hábiles y corridos calculados automáticamente</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(167,139,250,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">💰</div>
+            <div><div style="font-size:13px;font-weight:700;">Control total de honorarios</div><div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">Cobros vencidos, anticipos, cuotas y recordatorios</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(249,115,22,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">✨</div>
+            <div><div style="font-size:13px;font-weight:700;">Lex IA: redacción legal en segundos</div><div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">Escritos, notificaciones y resúmenes generados por IA</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ MÓDULOS ══════ -->
+<section>
+  <div class="section-inner">
+    <div class="center fade-in" style="margin-bottom:40px;">
+      <div class="section-label">Funcionalidades</div>
+      <h2 class="section-title">Todo lo que tu estudio necesita</h2>
+      <p class="section-sub">Cinco módulos integrados que reemplazan Excel, Google Calendar, WhatsApp y tres apps más. Un solo sistema, sin fricciones.</p>
+    </div>
+
+    <div class="mod-tabs">
+      <button class="mod-tab active" onclick="showMod('causas')">📁 Expedientes</button>
+      <button class="mod-tab" onclick="showMod('agenda')">📅 Agenda</button>
+      <button class="mod-tab" onclick="showMod('cobros')">💰 Cobros</button>
+      <button class="mod-tab" onclick="showMod('clientes')">👥 Clientes</button>
+      <button class="mod-tab" onclick="showMod('lexia')">✨ Lex IA</button>
+    </div>
+
+    <div id="mod-causas" class="mod-panel active">
+      <div>
+        <div class="feat-tag">Módulo Expedientes</div>
+        <h3 class="feat-title">Cada causa, un expediente completo</h3>
+        <p class="feat-desc">RIT, tribunal, contraparte, estado procesal, checklist de tareas, notas privadas, documentos adjuntos, horas trabajadas y cobros — todo en una sola pantalla.</p>
+        <ul class="feat-bullets">
+          <li><div class="bullet-icon" style="background:#EFF6FF;color:#1A56A0;">🗂️</div> RIT, tribunal, contraparte y estado siempre visibles</li>
+          <li><div class="bullet-icon" style="background:#F0FDF4;color:#059669;">✅</div> Checklist de tareas procesales por causa</li>
+          <li><div class="bullet-icon" style="background:#FEF3C7;color:#D97706;">📝</div> Notas privadas y documentos adjuntos</li>
+          <li><div class="bullet-icon" style="background:#EDE9FE;color:#7C3AED;">⏱️</div> Registro de horas para justificar honorarios</li>
+        </ul>
+      </div>
+      <div class="mod-visual" style="background:#F8FAFF;border-radius:16px;padding:24px;border:1px solid #E5E7EB;">
+        <div style="background:white;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #E5E7EB;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span style="font-size:12px;font-weight:800;color:#0F1E35;">Causa RIT L-1234-2024</span>
+            <span style="background:#EFF6FF;color:#1A56A0;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;">ACTIVA</span>
+          </div>
+          <div style="font-size:11px;color:#6B7280;margin-bottom:10px;">Juzgado de Letras del Trabajo · Santiago · Laboral</div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:7px;font-size:11px;"><span style="color:#34D399;font-weight:800;">✓</span> Presentación de demanda</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:11px;"><span style="color:#34D399;font-weight:800;">✓</span> Notificación al demandado</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:11px;"><span style="color:#1A56A0;font-weight:800;">○</span> Audiencia preparatoria — 15 ago</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:11px;color:#9CA3AF;"><span>○</span> Audiencia de juicio</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:#F0FDF4;border-radius:10px;padding:12px;text-align:center;"><div style="font-size:18px;font-weight:900;color:#059669;">$450.000</div><div style="font-size:10px;color:#6B7280;">Honorarios acordados</div></div>
+          <div style="background:#EFF6FF;border-radius:10px;padding:12px;text-align:center;"><div style="font-size:18px;font-weight:900;color:#1A56A0;">4.5 hrs</div><div style="font-size:10px;color:#6B7280;">Horas registradas</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mod-agenda" class="mod-panel">
+      <div>
+        <div class="feat-tag">Módulo Agenda</div>
+        <h3 class="feat-title">Nunca más pierdas una audiencia ni un plazo</h3>
+        <p class="feat-desc">Calendario con vistas mensual, semanal y diaria. Calculadora de plazos procesales chilenos integrada. Alertas automáticas por email.</p>
+        <ul class="feat-bullets">
+          <li><div class="bullet-icon" style="background:#EFF6FF;">⚖️</div> Calculadora de plazos: días hábiles y corridos</li>
+          <li><div class="bullet-icon" style="background:#F0FDF4;">🔔</div> Alertas configurables: 1, 3 o 7 días antes</li>
+          <li><div class="bullet-icon" style="background:#FEF3C7;">📆</div> Arrastra eventos para reagendar en segundos</li>
+          <li><div class="bullet-icon" style="background:#EDE9FE;">📤</div> Exporta a Google Calendar con un clic</li>
+        </ul>
+      </div>
+      <div class="mod-visual" style="background:#F8FAFF;border-radius:16px;padding:24px;border:1px solid #E5E7EB;">
+        <div style="font-size:13px;font-weight:800;color:#0F1E35;margin-bottom:14px;">📅 Julio 2026</div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:12px;">
+          <div style="font-size:9px;font-weight:700;color:#9CA3AF;text-align:center;">L</div><div style="font-size:9px;font-weight:700;color:#9CA3AF;text-align:center;">M</div><div style="font-size:9px;font-weight:700;color:#9CA3AF;text-align:center;">M</div><div style="font-size:9px;font-weight:700;color:#9CA3AF;text-align:center;">J</div><div style="font-size:9px;font-weight:700;color:#9CA3AF;text-align:center;">V</div><div style="font-size:9px;font-weight:700;color:#9CA3AF;text-align:center;">S</div><div style="font-size:9px;font-weight:700;color:#9CA3AF;text-align:center;">D</div>
+          <div style="font-size:10px;text-align:center;padding:4px;color:#6B7280;">1</div><div style="font-size:10px;text-align:center;padding:4px;color:#6B7280;">2</div><div style="font-size:10px;text-align:center;padding:4px;color:#6B7280;">3</div><div style="font-size:10px;text-align:center;padding:4px;background:#1A56A0;border-radius:6px;color:white;font-weight:700;">4</div><div style="font-size:10px;text-align:center;padding:4px;color:#6B7280;">5</div><div style="font-size:10px;text-align:center;padding:4px;color:#D1D5DB;">6</div><div style="font-size:10px;text-align:center;padding:4px;color:#D1D5DB;">7</div>
+          <div style="font-size:10px;text-align:center;padding:4px;color:#6B7280;">8</div><div style="font-size:10px;text-align:center;padding:4px;background:#FEF3C7;border-radius:6px;color:#D97706;font-weight:700;">9</div><div style="font-size:10px;text-align:center;padding:4px;color:#6B7280;">10</div><div style="font-size:10px;text-align:center;padding:4px;color:#6B7280;">11</div><div style="font-size:10px;text-align:center;padding:4px;background:#FEE2E2;border-radius:6px;color:#EF4444;font-weight:700;">12</div><div style="font-size:10px;text-align:center;padding:4px;color:#D1D5DB;">13</div><div style="font-size:10px;text-align:center;padding:4px;color:#D1D5DB;">14</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div style="background:#EFF6FF;border-left:3px solid #1A56A0;border-radius:0 8px 8px 0;padding:8px 12px;font-size:11px;"><strong>09:00</strong> Audiencia preparatoria · RIT L-1234</div>
+          <div style="background:#FEE2E2;border-left:3px solid #EF4444;border-radius:0 8px 8px 0;padding:8px 12px;font-size:11px;"><strong>⚠️ Plazo vence hoy:</strong> Presentar escrito RIT C-567</div>
+          <div style="background:#F0FDF4;border-left:3px solid #34D399;border-radius:0 8px 8px 0;padding:8px 12px;font-size:11px;"><strong>15:00</strong> Reunión cliente · González Hermanos</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mod-cobros" class="mod-panel">
+      <div>
+        <div class="feat-tag">Módulo Cobros</div>
+        <h3 class="feat-title">Cobra todo lo que mereces, a tiempo</h3>
+        <p class="feat-desc">Registra honorarios, cuotas y anticipos por causa. El sistema detecta cobros vencidos automáticamente y te avisa antes de que sea tarde.</p>
+        <ul class="feat-bullets">
+          <li><div class="bullet-icon" style="background:#EFF6FF;">📊</div> Resumen AR Aging: antigüedad exacta en días</li>
+          <li><div class="bullet-icon" style="background:#F0FDF4;">💳</div> Pagos parciales y estado de cuenta por cliente</li>
+          <li><div class="bullet-icon" style="background:#FEF3C7;">📧</div> Aviso automático cuando un cobro está por vencer</li>
+          <li><div class="bullet-icon" style="background:#EDE9FE;">📄</div> Exporta reporte a Excel o PDF con un clic</li>
+        </ul>
+      </div>
+      <div class="mod-visual" style="background:#F8FAFF;border-radius:16px;padding:24px;border:1px solid #E5E7EB;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+          <div style="background:white;border-radius:10px;padding:12px;border:1px solid #E5E7EB;"><div style="font-size:11px;color:#6B7280;margin-bottom:2px;">COBRADO TOTAL</div><div style="font-size:18px;font-weight:900;color:#059669;">$2.085.000</div></div>
+          <div style="background:white;border-radius:10px;padding:12px;border:1px solid #E5E7EB;"><div style="font-size:11px;color:#6B7280;margin-bottom:2px;">VENCIDOS</div><div style="font-size:18px;font-weight:900;color:#EF4444;">6 cobros</div></div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:12px;border:1px solid #E5E7EB;">
+          <div style="font-size:10px;font-weight:700;color:#6B7280;margin-bottom:8px;">AR AGING — Cartera vencida</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:#EF4444;flex-shrink:0;"></div><div style="font-size:11px;flex:1;">+90 días</div><div style="font-size:11px;font-weight:700;">$350.000</div></div>
+            <div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:#F97316;flex-shrink:0;"></div><div style="font-size:11px;flex:1;">61–90 días</div><div style="font-size:11px;font-weight:700;">$300.000</div></div>
+            <div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:#EAB308;flex-shrink:0;"></div><div style="font-size:11px;flex:1;">31–60 días</div><div style="font-size:11px;font-weight:700;">$650.000</div></div>
+            <div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:#34D399;flex-shrink:0;"></div><div style="font-size:11px;flex:1;">0–30 días</div><div style="font-size:11px;font-weight:700;">$600.000</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mod-clientes" class="mod-panel">
+      <div>
+        <div class="feat-tag">Módulo Clientes</div>
+        <h3 class="feat-title">Clientes, prospectos y equipo — todo conectado</h3>
+        <p class="feat-desc">CRM completo para tu cartera: gestiona prospectos, lleva el historial de cada cliente y ofréceles un portal para que vean sus causas sin llamarte.</p>
+        <ul class="feat-bullets">
+          <li><div class="bullet-icon" style="background:#EFF6FF;">👤</div> Ficha completa con historial por cliente</li>
+          <li><div class="bullet-icon" style="background:#F0FDF4;">🔗</div> Portal del cliente: ve su causa en línea</li>
+          <li><div class="bullet-icon" style="background:#FEF3C7;">📈</div> Pipeline de prospectos: nuevo → contactado → cliente</li>
+          <li><div class="bullet-icon" style="background:#EDE9FE;">👥</div> Multi-usuario con roles Titular y Colaborador</li>
+        </ul>
+      </div>
+      <div class="mod-visual" style="background:#F8FAFF;border-radius:16px;padding:24px;border:1px solid #E5E7EB;">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:white;border-radius:10px;border:1px solid #E5E7EB;">
+            <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:50%;background:#1A56A0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:white;">AS</div><div><div style="font-size:12px;font-weight:700;color:#0F1E35;">Andrea Soto M.</div><div style="font-size:10px;color:#6B7280;">3 causas activas</div></div></div>
+            <span style="background:#F0FDF4;color:#059669;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;">CLIENTE</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:white;border-radius:10px;border:1px solid #E5E7EB;">
+            <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:50%;background:#7C3AED;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:white;">MR</div><div><div style="font-size:12px;font-weight:700;color:#0F1E35;">Mario Riquelme P.</div><div style="font-size:10px;color:#6B7280;">Consulta inicial pendiente</div></div></div>
+            <span style="background:#FEF3C7;color:#D97706;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;">PROSPECTO</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:white;border-radius:10px;border:1px solid #E5E7EB;">
+            <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:50%;background:#059669;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:white;">LV</div><div><div style="font-size:12px;font-weight:700;color:#0F1E35;">Laura Vargas C.</div><div style="font-size:10px;color:#6B7280;">Portal activo · Última visita: hoy</div></div></div>
+            <span style="background:#EFF6FF;color:#1A56A0;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;">PORTAL ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mod-lexia" class="mod-panel">
+      <div>
+        <div class="feat-tag">Módulo Lex IA</div>
+        <h3 class="feat-title">Redacta escritos legales en segundos, no en horas</h3>
+        <p class="feat-desc">IA entrenada en derecho chileno. Genera escritos, notificaciones, resúmenes de causas y correos a clientes. Tú revisas y firmas — la IA hace el borrador.</p>
+        <ul class="feat-bullets">
+          <li><div class="bullet-icon" style="background:#EDE9FE;">✍️</div> Escritos judiciales en formato correcto</li>
+          <li><div class="bullet-icon" style="background:#EFF6FF;">📧</div> Correos a clientes con el tono adecuado</li>
+          <li><div class="bullet-icon" style="background:#F0FDF4;">📋</div> Resúmenes de causas para reuniones</li>
+          <li><div class="bullet-icon" style="background:#FEF3C7;">🔍</div> Análisis de documentos cargados</li>
+        </ul>
+      </div>
+      <div class="mod-visual" style="background:#0F1E35;border-radius:16px;padding:24px;">
+        <div style="font-size:10px;font-weight:700;color:#A78BFA;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;">✨ Lex IA — Asistente legal</div>
+        <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:12px;margin-bottom:10px;font-size:11px;color:rgba(255,255,255,.6);">Redacta un escrito de contestación para la causa RIT L-1234-2024, alegando prescripción de la acción laboral.</div>
+        <div style="background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);border-radius:10px;padding:14px;font-size:11px;color:rgba(255,255,255,.8);line-height:1.7;">
+          <strong style="color:#A78BFA;">Lex IA</strong> generando escrito...<br/><br/>
+          <strong>EN LO PRINCIPAL:</strong> Contestación de demanda; <strong>PRIMER OTROSÍ:</strong> Opone excepción de prescripción; <strong>SEGUNDO OTROSÍ:</strong> Acompaña documentos...<br/><br/>
+          <span style="color:#34D399;">✓ Borrador listo en 8 segundos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SCREENSHOT REAL ══════ -->
+<section style="background:#F8FAFF;">
+  <div class="section-inner">
+    <div class="center fade-in" style="margin-bottom:44px;">
+      <div class="section-label">Vista real</div>
+      <h2 class="section-title">Así se ve en tu pantalla</h2>
+      <p class="section-sub">El módulo de cobros en producción real. Sin demos armadas — esto es lo que ves cuando inicias sesión.</p>
+    </div>
+    <div class="fade-in" style="border-radius:20px;overflow:hidden;box-shadow:0 40px 80px rgba(15,30,53,.2);border:1px solid #E5E7EB;">
+      <div style="background:#1A2C4A;padding:12px 20px;display:flex;align-items:center;gap:10px;">
+        <div style="display:flex;gap:6px;"><div style="width:12px;height:12px;border-radius:50%;background:#FF5F57;"></div><div style="width:12px;height:12px;border-radius:50%;background:#FEBC2E;"></div><div style="width:12px;height:12px;border-radius:50%;background:#28C840;"></div></div>
+        <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;padding:4px 14px;font-size:11px;color:rgba(255,255,255,.4);max-width:340px;margin:0 auto;">juridicacrm.cl/cobros</div>
+      </div>
+      <img src="https://juridica-frontend-production.up.railway.app/screenshot-cobros.jpg" alt="Módulo de cobros de Jurídica CRM" style="width:100%;display:block;" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ TESTIMONIOS ══════ -->
+<section>
+  <div class="section-inner">
+    <div class="center fade-in" style="margin-bottom:44px;">
+      <div class="section-label">Testimonios</div>
+      <h2 class="section-title">Lo que dicen quienes ya lo usan</h2>
+    </div>
+    <div class="grid-3 fade-in">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Llevaba mis causas en tres planillas de Excel y siempre se me pasaba algo. La primera semana que usé Jurídica CRM me llegó una alerta de plazo que tenía completamente olvidado. Me salvó de una situación muy seria."</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#1A56A0,#4A90D9);">RF</div>
+          <div><div class="testi-name">Rodrigo Fuentes A.</div><div class="testi-role">Abogado laboral · Concepción</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Somos dos abogadas y una asistente. Antes nos mandábamos correos para saber en qué estaba cada causa. Ahora todo está en el sistema. Lo que más cambió fue la cobranza — teníamos honorarios sin cobrar de meses."</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#7C3AED,#A78BFA);">CM</div>
+          <div><div class="testi-name">Carolina Medina V.</div><div class="testi-role">Estudio de familia · Santiago</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"El portal del cliente es lo que más me cambió el día a día. Ya no me llaman para preguntar en qué va su causa. Me eliminé el 70% de las llamadas de seguimiento — recuperé horas de trabajo real."</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#059669,#34D399);">PV</div>
+          <div><div class="testi-name">Pablo Vargas O.</div><div class="testi-role">Abogado civil · Valparaíso</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CTA FINAL ══════ -->
+<section class="cta-final">
+  <div class="section-inner center fade-in">
+    <div class="section-label" style="color:#60A5FA;">Empieza hoy</div>
+    <h2 class="section-title" style="color:white;max-width:600px;margin:0 auto 16px;">Tu estudio merece<br/>una herramienta a su altura.</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.55);margin:0 auto 36px;">14 días gratis, sin tarjeta de crédito, sin compromisos. Si no te convence en dos semanas, no pagas nada.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://juridica-frontend-production.up.railway.app/register" class="btn btn-primary btn-lg">Crear cuenta gratis →</a>
+      <a href="contacto.html" class="btn btn-secondary btn-lg">Hablar con el equipo</a>
+    </div>
+    <p style="margin-top:20px;font-size:12px;color:rgba(255,255,255,.3);">Sin letra chica · Cancela cuando quieras · Datos 100% seguros</p>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:4px;">
+          <div class="nav-logo-icon">
+            <svg width="22" height="22" viewBox="0 0 44 44" fill="none"><path d="M22 4L22 40" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M13 12L22 4L31 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 20L17 20M7 20L4 28C4 30.8 6.2 33 9 33C11.8 33 14 30.8 14 28L11 20" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 20L27 20M37 20L40 28C40 30.8 37.8 33 35 33C32.2 33 30 30.8 30 28L33 20" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 40H29" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <span class="nav-logo-text">Jurídica <span>CRM</span></span>
+        </a>
+        <p>El CRM diseñado exclusivamente para abogados y estudios jurídicos chilenos. Causas, agenda, cobros y clientes en un solo lugar.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Producto</h4>
+        <a href="funcionalidades.html">Funcionalidades</a>
+        <a href="precios.html">Precios</a>
+        <a href="https://juridica-frontend-production.up.railway.app/register">Prueba gratis</a>
+        <a href="https://juridica-frontend-production.up.railway.app/login">Iniciar sesión</a>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html">Soporte</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Términos de uso</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Jurídica CRM · Diseñado para abogados chilenos</p>
+      <div class="footer-bottom-links">
+        <a href="https://instagram.com/juridicacrm">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function showMod(id) {
+  document.querySelectorAll('.mod-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.mod-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('mod-' + id).classList.add('active');
+}
+</script>
+</body>
+</html>
