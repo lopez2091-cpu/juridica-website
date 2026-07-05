@@ -218,11 +218,20 @@ footer { background: var(--navy-d); padding: 56px 5% 32px; }
 .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,86,160,.1); }
 .form-textarea { resize: vertical; min-height: 120px; }
 
+/* ══════════ RESPONSIVE GRID UTILITIES ══════════ */
+.rg-halves    { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.rg-thirds    { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+.rg-contact   { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: start; }
+.rg-blog-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.rg-form-row  { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
 /* ══════════ RESPONSIVE ══════════ */
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   .feat-row { gap: 40px; }
+  .rg-contact { grid-template-columns: 3fr 2fr; gap: 36px; }
 }
 
 @media (max-width: 768px) {
@@ -244,9 +253,31 @@ footer { background: var(--navy-d); padding: 56px 5% 32px; }
   .nav-mobile a { color: rgba(255,255,255,.7); font-size: 15px; font-weight: 600; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
   .nav-mobile a:last-child { border-bottom: none; color: var(--blue-l); }
   .do-dont { grid-template-columns: 1fr; }
+  /* Responsive grid utilities */
+  .rg-halves, .rg-thirds, .rg-contact, .rg-blog-feat { grid-template-columns: 1fr; gap: 28px; }
+  /* Pricing: stack featured card without scale */
+  .rg-thirds .pricing-card.featured { margin: 0; }
+  /* Blog featured: stack text above visual */
+  .rg-blog-feat > div:last-child { margin-top: 0; }
 }
 
 @media (max-width: 480px) {
+  section { padding: 48px 4%; }
+  .hero { padding: 64px 4% 48px; }
+  .stats-bar { padding: 28px 4%; }
+  .page-hero { padding: 64px 4% 56px; }
+  footer { padding: 44px 4% 28px; }
   .stats-bar-inner { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  /* Hide nav CTA on very small screens — already in mobile menu */
+  .btn-nav-solid { display: none; }
+  /* Stack form double-column row */
+  .rg-form-row { grid-template-columns: 1fr; }
+  /* Tighter hero buttons */
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  /* Section titles slightly smaller */
+  .section-title { letter-spacing: -.3px; }
+  /* Pricing cards full padding */
+  .pricing-card { padding: 24px 20px; }
 }
